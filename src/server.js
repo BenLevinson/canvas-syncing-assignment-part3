@@ -23,16 +23,16 @@ app.listen(PORT);
 
 io.on('connection', (socket) => {
   socket.join('room1');
-  
+
   socket.on('draw', (data) => {
-    io.sockets.in('room1').emit('draw', {user: data.user, square: data.square});
+    io.sockets.in('room1').emit('draw', { user: data.user, square: data.square });
   });
 
   socket.on('leave', (data) => {
-    io.sockets.in('room1').emit('clearCanvas', {user: data.user, square: data.square});  
-      console.log("emitted leave");
+    io.sockets.in('room1').emit('clearCanvas', { user: data.user, square: data.square });
+    console.log('emitted leave');
   });
-    
+
   socket.on('disconnect', () => {
     socket.leave('room1');
   });

@@ -33,7 +33,7 @@ io.on('connection', (socket) => {
       console.log("emitted leave");
   });
     
-  socket.on('disconnect', (data) => {
+  socket.on('disconnect', () => {
     socket.leave('room1');
   });
 });
